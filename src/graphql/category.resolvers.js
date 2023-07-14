@@ -12,6 +12,11 @@ const addCategory = async (_, { input }, context) => {
     });
 }
 
+const getCategory = (_, { id }) => {
+    return service.findOne(id);
+}
+
 module.exports = {
     addCategory,
+    getCategory,
 }
