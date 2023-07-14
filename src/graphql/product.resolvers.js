@@ -1,24 +1,31 @@
 const ProductService = require('./../services/product.service');
 const service = new ProductService();
 
-const getProduct = async (_, { id }) => {
-    const product = await service.findOne(id);
-    return product;
+const getProduct = (_, { id }) => {
+    return service.findOne(id);
 };
 
-const getProducts = async () => {
-    const products = await service.find({});
-    return products;
+const getProducts = () => {
+    return service.find({});
 };
 
-const addProduct = async (_, { input }) => {
-    const newProduct = await service.create(input);
-    return newProduct;
+const addProduct = (_, { input }) => {
+    return service.create(input);
 }
 
+const updateProduct = (_, { id, input }) => {
+    return service.update(id, input);
+}
+
+const deleteProduct = (_, { id }) => {
+    service.delete(id)
+    return id
+}
 
 module.exports = {
     getProduct,
     getProducts,
     addProduct,
+    updateProduct,
+    deleteProduct,
 };
